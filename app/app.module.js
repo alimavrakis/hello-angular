@@ -1,5 +1,8 @@
 import angular from 'angular';
-import home from './home/home.component.js';
+import hero from './hero/hero.component.js';
+import exchangeRatesService from './resources/exchange-rate.service.js';
 
 angular.module('helloAngular', [])
-  .component('home', home);
+  .component('hero', hero)
+  .factory('exchangeRatesService', exchangeRatesService);
+
