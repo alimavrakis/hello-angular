@@ -1,19 +1,19 @@
 'use strict';
 
-var heroCtrl = function($http, exchangeRatesService) {
-  var vm = this;
-  vm.loaded = false;
-  vm.usdEur = 'N/A';
-  vm.usdCny = 'N/A';
+const heroCtrl = function($http, exchangeRatesService) {
+  this.loading = true;
+  this.usdEur = 'N/A';
+  this.usdCny = 'N/A';
 
 
-  exchangeRatesService.getRates(['EUR', 'CNY']).then(function(resp) {
-    vm.loaded = true;
-    vm.usdEur = resp.data.rates.EUR;
-    vm.usdCny = resp.data.rates.CNY;
+  exchangeRatesService.getRates(['EUR', 'CNY']).then((resp) => {
+    this.loading = false;
+    this.usdEur = resp.data.rates.EUR;
+    this.usdCny = resp.data.rates.CNY;
   });
 };
 
+// only really needed for projects with minifaction. Better yet...use ng-annotate instead
 heroCtrl.$inject = ['$http', 'exchangeRatesService'];
 
 module.exports = {
@@ -23,4 +23,3 @@ module.exports = {
     customText: '@'
   }
 };
-

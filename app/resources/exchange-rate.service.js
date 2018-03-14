@@ -1,13 +1,13 @@
 'use strict';
 
-export default function exchangeRatesService($http) {
+export default class ExchangeRatesService {
 
-  function getRates(rates) {
-    return $http.get('https://api.fixer.io/latest?base=USD&symbols=' + rates.join(','));
+  constructor($http) {
+    this.$http = $http;
   }
 
-  return {
-    getRates: getRates
-  };
+  getRates(rates) {
+    return this.$http.get('https://api.fixer.io/latest?base=USD&symbols=' + rates.join(','));
+  }
 
 };

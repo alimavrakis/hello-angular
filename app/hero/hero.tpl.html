@@ -1,4 +1,7 @@
-<div ng-if="$ctrl.loaded">
+<div ng-if="$ctrl.loading">
+  <h3>Loading...</h3>
+</div>
+<div ng-if="!$ctrl.loading">
   <h3>{{ $ctrl.customText }}</h3>
   <ul>
     <li>USD/EUR: {{ $ctrl.usdEur }}</li>
